@@ -12,6 +12,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
+This is a fork of the official Apache NiFi project with the purpose of:
+- Experimenting with my own code modifications
+- Staging area for codes that are worthy of contributing to the official Apache NiFi project
+- Code changes that might not be worthy to be contributed but I find useful
+
 [<img src="https://nifi.apache.org/assets/images/apache-nifi-logo.svg" width="300" height="126" alt="Apache NiFi"/>][nifi]
 
 [![ci-workflow](https://github.com/apache/nifi/workflows/ci-workflow/badge.svg)](https://github.com/apache/nifi/actions)
