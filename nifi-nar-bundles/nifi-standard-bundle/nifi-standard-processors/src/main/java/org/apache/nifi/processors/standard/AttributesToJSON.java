@@ -53,6 +53,9 @@ import java.util.Map;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 @EventDriven
 @SideEffectFree
 @SupportsBatching
@@ -198,7 +201,14 @@ public class AttributesToJSON extends AbstractProcessor {
             result = new HashMap<>(ffAttributes.size());
             for (Map.Entry<String, String> e : ffAttributes.entrySet()) {
                 if (!attributesToRemove.contains(e.getKey())) {
-                    result.put(e.getKey(), e.getValue());
+                    String val = ff.getAttribute(e.getKey());
+                    if (isNotBlank(val)) {
+                        result.put(e.getKey(), val);
+                    } else if (isBlank(val) && nullValForEmptyString) {
+                        result.put(e.getKey(), null);
+                    } else {
+                        result.put(e.getKey(), "");
+                    }
                 }
             }
         }
